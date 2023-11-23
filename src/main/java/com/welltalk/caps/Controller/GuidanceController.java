@@ -15,7 +15,7 @@ import com.welltalk.caps.Entity.GuidanceEntity;
 
 
 @RestController
-//@CrossOrigin(origins = "http://roundhouse.proxy.rlwy.net:44142")
+@CrossOrigin(origins = "http://localhost:19006/")
 public class GuidanceController {
 
     private GuidanceRepository guidanceRepository;
