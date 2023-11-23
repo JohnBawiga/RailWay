@@ -14,7 +14,7 @@ import com.welltalk.caps.Entity.AppointmentEntity;
 import com.welltalk.caps.Repository.AppointmentRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:19006/")
+@CrossOrigin(origins = "http://roundhouse.proxy.rlwy.net:44142")
 
 public class AppointmentController {
 

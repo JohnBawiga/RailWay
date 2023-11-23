@@ -29,7 +29,7 @@ import com.welltalk.caps.Service.EmailService;
 import com.welltalk.caps.Service.UserService;
 
 	@RestController
-	@CrossOrigin(origins = "http://localhost:19006")
+	@CrossOrigin(origins = "http://roundhouse.proxy.rlwy.net:44142")
 	public class UserController {
 
 	    @Autowired
