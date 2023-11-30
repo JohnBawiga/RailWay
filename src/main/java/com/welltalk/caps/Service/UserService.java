@@ -38,6 +38,10 @@ public class UserService {
         // Implement logic to fetch user data by studentID from the repository
         return userRepository.findByStudentID(studentID);
     }
+    public UserEntity getUserByStudentID1(String studentID) {
+        // Implement logic to fetch user data by studentID from the repository
+        return userRepository.findByStudentID(studentID);
+    }
 
     public UserEntity insertUser(UserEntity user) {
         return userRepository.save(user);

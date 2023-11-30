@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @GetMapping("/user/{studentID}")
-    public ResponseEntity<UserEntity> getUserByStudentID(@PathVariable String studentID) {
+    public ResponseEntity<UserEntity> getUserByStudentID1(@PathVariable String studentID) {
         Optional<UserEntity> user = Optional.ofNullable(userRepository.findByStudentID(studentID));
         return user.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
