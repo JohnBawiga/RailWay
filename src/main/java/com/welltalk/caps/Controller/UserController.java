@@ -41,18 +41,19 @@ public class UserController {
     }
 
     @GetMapping("/user/{studentID}")
-    public ResponseEntity<UserEntity> getUserByStudentID1(@PathVariable String studentID) {
+    public ResponseEntity<UserEntity> getUserByStudentID(@PathVariable String studentID) {
         Optional<UserEntity> user = Optional.ofNullable(userRepository.findByStudentID(studentID));
         return user.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/userGet/{studentID}")
-    public ResponseEntity<UserEntity> getUserByStudentID(@PathVariable("studentID") String studentID) {
-        Optional<UserEntity> user = Optional.ofNullable(userRepository.findByStudentID(studentID));
+    @GetMapping("/userGet/{userid}")
+    public ResponseEntity<UserEntity> getUserById(@PathVariable("userid") long userid) {
+        Optional<UserEntity> user = userRepository.findById(userid);
         return user.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
 
     @PutMapping("/user/{studentID}")
     public ResponseEntity<String> updateStudent(@PathVariable("studentID") String studentID, @RequestBody UserEntity updatedEntry) {
