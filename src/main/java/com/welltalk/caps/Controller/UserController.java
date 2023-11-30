@@ -148,4 +148,14 @@ public class UserController {
 
         return ResponseEntity.ok("Password updated successfully");
     }
+    @GetMapping("/userByStudentID/{studentID}")
+    public ResponseEntity<UserEntity> getUserByStudentID(@PathVariable String studentID) {
+        // Call the service method to fetch user data by studentID
+        UserEntity user = userService.getUserByStudentID(studentID);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
