@@ -18,7 +18,7 @@ import com.welltalk.caps.Service.EmailService;
 import com.welltalk.caps.Service.UserService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:19006/")
+@CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired
