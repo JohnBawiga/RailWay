@@ -34,12 +34,20 @@ public class UserController {
     public List<UserEntity> getAllUser() {
         return userRepository.findAll();
     }
-
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody UserEntity user) {
-        return userService.signup(user);
+        // Check if the studentID already exists
+        if (userService.existsByStudentID(user.getStudentID())) {
+            return new ResponseEntity<>("StudentID already exists", HttpStatus.BAD_REQUEST);
+        }
+
+        // Save the user if studentID is unique
+        userService.createUser(user);
+        return new ResponseEntity<>("User created successfully", HttpStatus.CREATED);
     }
 
+
+    
 
     @GetMapping("/user/{userid}")
     public ResponseEntity<UserEntity> getUserByUserId(@PathVariable Long userid) {

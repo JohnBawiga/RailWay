@@ -15,6 +15,12 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+    
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    
 
     public ResponseEntity<String> signup(UserEntity user) {
         // Check if email or studentID is already registered
@@ -62,5 +68,11 @@ public class UserService {
         // Implement logic to fetch user data by userid from the repository
         return userRepository.findByUserid(userid);
 }
+    public void createUser(UserEntity userEntity) {
+        userRepository.save(userEntity);
+    }
+    public boolean existsByStudentID(String studentID) {
+        return userRepository.existsByStudentID(studentID);
+    }
 
 }
