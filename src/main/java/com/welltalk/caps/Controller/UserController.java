@@ -40,12 +40,19 @@ public class UserController {
         return userService.signup(user);
     }
 
-    @GetMapping("/user/{studentID}")
-    public ResponseEntity<UserEntity> getUserByStudentID(@PathVariable String studentID) {
-        Optional<UserEntity> user = Optional.ofNullable(userRepository.findByStudentID(studentID));
-        return user.map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+
+    @GetMapping("/user/{userid}")
+    public ResponseEntity<UserEntity> getUserByUserId(@PathVariable Long userid) {
+        // Call the service method to fetch user data by userid
+        UserEntity user = userService.getUserByUserId(userid);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
+
+
 
     @GetMapping("/userGet/{userid}")
     public ResponseEntity<UserEntity> getUserById(@PathVariable("userid") long userid) {
@@ -55,9 +62,9 @@ public class UserController {
     }
 
 
-    @PutMapping("/user/{studentID}")
-    public ResponseEntity<String> updateStudent(@PathVariable("studentID") String studentID, @RequestBody UserEntity updatedEntry) {
-        Optional<UserEntity> user = Optional.ofNullable(userRepository.findByStudentID(studentID));
+    @PutMapping("/user/{userid}")
+    public ResponseEntity<String> updateUser(@PathVariable("userid") long userid, @RequestBody UserEntity updatedEntry) {
+        Optional<UserEntity> user = userRepository.findById(userid);
         if (user.isPresent()) {
             UserEntity existingEntry = user.get();
 
@@ -67,14 +74,14 @@ public class UserController {
             existingEntry.setLastName(updatedEntry.getLastName());
             existingEntry.setPassword(updatedEntry.getPassword());
             existingEntry.setPhoneNumber(updatedEntry.getPhoneNumber());
-            existingEntry.setStudentID(updatedEntry.getStudentID());
-
+         
             userRepository.save(existingEntry);
             return ResponseEntity.ok("User's profile has been updated successfully!");
         } else {
             return ResponseEntity.notFound().build();
         }
     }
+
 
     @DeleteMapping("/user/{studentID}")
     public ResponseEntity<String> deleteUser(@PathVariable("studentID") String studentID) {
