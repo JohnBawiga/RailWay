@@ -58,4 +58,9 @@ public class UserService {
         else
             return null;
     }
+    public UserEntity getUserByUserId(Long userid) {
+        // Implement logic to fetch user data by userid from the repository
+        return userRepository.findByUserid(userid);
+}
+
 }
