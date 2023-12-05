@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.*;
 import com.welltalk.caps.Entity.AppointmentEntity;
 
 import com.welltalk.caps.Repository.AppointmentRepository;
+import com.welltalk.caps.Service.AppointmentService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:19006/")
 
 public class AppointmentController {
 
+	@Autowired 
+	AppointmentService appointmentService;
+	
     @Autowired
     private AppointmentRepository appointmentRepository;
     
@@ -72,7 +76,24 @@ public class AppointmentController {
                     .body(Collections.emptyList());
         }
     }
-
+    
+    @GetMapping("/all")
+    public ResponseEntity<Object> getRequest() {
+        return new ResponseEntity<>(appointmentService.getRequest(), HttpStatus.OK);
+        
+    }
+    
+    @DeleteMapping("/{makeappointmentid}")
+    public ResponseEntity<Object> deleteRequest(@PathVariable("makeappointmentid") int makeappointmentid){
+    	appointmentService.deleteRequest(makeappointmentid);
+    	return new ResponseEntity<>("Request deleted successfully", HttpStatus.OK);
+    		
+    }
+    @PutMapping("/{makeappointmentid}")
+    public ResponseEntity<Object> updateAppointment(String stringToken, @PathVariable("makeappointmentid") int makeappointmentid){
+    	appointmentService.updateAppointment(makeappointmentid, stringToken);
+    	return new ResponseEntity<>("Request Updated Successfully", HttpStatus.OK);
+    }
 
 
 }

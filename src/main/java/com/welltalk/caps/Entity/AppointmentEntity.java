@@ -18,12 +18,12 @@ public class AppointmentEntity {
     private String Time;
     private String message;
     private int userid;
-    private boolean decision;
+    private Boolean decision;
 
     public AppointmentEntity() {
     }
 
-    public AppointmentEntity(int makeappointmentid, String date, String time, String message, int userid, boolean decision) {
+    public AppointmentEntity(int makeappointmentid, String date, String time, String message, int userid, Boolean decision) {
         super();
         this.makeappointmentid = makeappointmentid;
         Date = date;
@@ -73,11 +73,11 @@ public class AppointmentEntity {
         this.userid = userid;
     }
 
-    public boolean getDecision() {
+    public Boolean getDecision() {
         return decision;
     }
 
-    public void setDecision(boolean decision) {
+    public void setDecision(Boolean decision) {
         this.decision = decision;
     }
 }
