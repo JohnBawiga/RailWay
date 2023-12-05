@@ -13,7 +13,7 @@ import com.welltalk.caps.Repository.ScheduleRepository;
 import com.welltalk.caps.Service.ScheduleService;
 import com.welltalk.caps.Entity.ScheduleEntity;
 @RestController
-@CrossOrigin(origins = "http://localhost:19006/")
+@CrossOrigin(origins = "*")
 
 public class ScheduleController {
     private final ScheduleRepository scheduleRepository;

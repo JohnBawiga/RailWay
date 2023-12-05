@@ -72,7 +72,7 @@ import com.welltalk.caps.Entity.JournalEntity;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:19006/")
+@CrossOrigin(origins = "*")
 public class JournalController {
 
     private JournalRepository journalRepository;

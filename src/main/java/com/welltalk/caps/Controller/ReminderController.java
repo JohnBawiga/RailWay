@@ -11,7 +11,7 @@ import com.welltalk.caps.Service.ReminderService;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:19006/")
+@CrossOrigin(origins = "*")
 
 public class ReminderController {
     private final ReminderService reminderService;

@@ -20,7 +20,7 @@ import com.welltalk.caps.Service.ExerciseService;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:19006/")
+@CrossOrigin(origins = "*")
 
 @RequestMapping("/exercises")
 public class ExerciseController {
